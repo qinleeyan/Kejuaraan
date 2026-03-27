@@ -201,7 +201,8 @@ export const RegistrationForm = () => {
           kelas: formData.classCategory === 'prestasi' ? 'Prestasi' : 'Pemula'
         };
 
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwyIH06rsQuNvUJINSiIEnDaJbxZUXzZIar5vL_L8AAakjIjxyDzo2EfOFzWziOYkL1/exec';
+        const SCRIPT_URL = process.env.NEXT_PUBLIC_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbwyIH06rsQuNvUJINSiIEnDaJbxZUXzZIar5vL_L8AAakjIjxyDzo2EfOFzWziOYkL1/exec';
+        console.log('Submitting to:', SCRIPT_URL, 'payload:', payload);
 
         await fetch(SCRIPT_URL, {
           method: 'POST',

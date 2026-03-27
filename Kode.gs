@@ -63,67 +63,7 @@ function doGet(e) {
   }
 }
 
-/**
- * Fungsi getAthletes untuk mengambil data atlet berdasarkan ID kejuaraan
- */
-function getAthletes(competitionId) {
-  try {
-    console.log("=== getAthletes START ===");
-    console.log("Competition ID:", competitionId);
-    
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Daftar');
-    if (!sheet) {
-      throw new Error("Sheet 'Daftar' tidak ditemukan");
-    }
-    
-    var data = sheet.getDataRange().getValues();
-    console.log("Total rows in Daftar sheet:", data.length);
-    
-    if (data.length <= 1) {
-      console.log("No athlete data found");
-      return ContentService
-        .createTextOutput(JSON.stringify([]))
-        .setMimeType(ContentService.MimeType.JSON);
-    }
-    
-    // Filter by competition ID
-    var result = [];
-    for (var i = 1; i < data.length; i++) {
-      var row = data[i];
-      if (String(row[2]) === String(competitionId)) {
-        result.push({
-          rowIndex: i + 1, // 1-based index for sheet operations
-          timestamp: String(row[0] || ""),
-          registrationId: String(row[1] || ""),
-          idKejuaraan: String(row[2] || ""),
-          nama: String(row[3] || ""),
-          gender: String(row[4] || ""),
-          sabuk: String(row[5] || ""),
-          tempatTanggalLahir: String(row[6] || ""),
-          dojang: String(row[7] || ""),
-          berat: String(row[8] || ""),
-          tinggi: String(row[9] || ""),
-          kategori: String(row[10] || ""),
-          kelas: String(row[11] || ""),
-          foto: String(row[12] || "")
-        });
-      }
-    }
-    
-    console.log("Athletes found:", result.length);
-    console.log("=== getAthletes END ===");
-    
-    return ContentService
-      .createTextOutput(JSON.stringify(result))
-      .setMimeType(ContentService.MimeType.JSON);
-      
-  } catch (e) {
-    console.error("Error in getAthletes:", e.toString());
-    return ContentService
-      .createTextOutput(JSON.stringify({ error: e.toString() }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}
+
 
 /**
  * Fungsi getStats untuk mengambil statistik kompetisi dan atlet
