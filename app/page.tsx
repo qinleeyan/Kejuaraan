@@ -1,20 +1,20 @@
 import { Homepage } from '@/components/homepage';
 
 export const metadata = {
-  title: 'Elite Taekwondo Dojang - Championship Excellence & Registration',
-  description: 'Professional Taekwondo training and championship registration. Join our elite dojang for kyorugi (sparring) and poomsae (forms) competitions with certified black belt instructors.',
-  keywords: 'taekwondo, championship, kyorugi, poomsae, martial arts, competition, registration, dojang',
-  authors: [{ name: 'Elite Taekwondo Dojang' }],
+  title: 'Rizzon Taekwondo Dojang - Pendaftaran Kejuaraan & Pelatihan Elit',
+  description: 'Pelatihan Taekwondo profesional dan pendaftaran kejuaraan. Bergabunglah dengan dojang elit kami untuk kompetisi kyorugi (tanding) dan poomsae (jurus) bersama instruktur sabuk hitam bersertifikat.',
+  keywords: 'taekwondo, kejuaraan, kyorugi, poomsae, bela diri, kompetisi, pendaftaran, dojang',
+  authors: [{ name: 'Rizzon Taekwondo Dojang' }],
   openGraph: {
-    title: 'Elite Taekwondo Dojang - Championship Excellence',
-    description: 'Professional Taekwondo training and championship registration platform',
+    title: 'Rizzon Taekwondo Dojang - Keunggulan Kejuaraan',
+    description: 'Platform pendaftaran kejuaraan dan pelatihan Taekwondo profesional',
     type: 'website',
-    url: 'https://elitetaekwondo.com',
+    url: 'https://rizzonchampion.vercel.app',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Elite Taekwondo Dojang - Championship Excellence',
-    description: 'Register for championship competitions and train with experts',
+    title: 'Rizzon Taekwondo Dojang - Keunggulan Kejuaraan',
+    description: 'Daftar kompetisi kejuaraan dan berlatih bersama para ahli',
   },
 };
 

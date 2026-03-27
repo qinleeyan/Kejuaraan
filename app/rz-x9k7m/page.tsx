@@ -19,9 +19,9 @@ function AdminPageContent() {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground">
                 <h1 className="text-8xl font-black text-muted-foreground/20 select-none">404</h1>
-                <p className="text-xl font-semibold text-muted-foreground mt-4">Page Not Found</p>
-                <p className="text-sm text-muted-foreground/60 mt-2">The page you&apos;re looking for doesn&apos;t exist.</p>
-                <a href="/" className="mt-8 text-sm text-primary hover:underline">← Go Home</a>
+                <p className="text-xl font-semibold text-muted-foreground mt-4">Halaman Tidak Ditemukan</p>
+                <p className="text-sm text-muted-foreground/60 mt-2">Halaman yang Anda cari tidak ada.</p>
+                <a href="/" className="mt-8 text-sm text-primary hover:underline">← Kembali ke Beranda</a>
             </div>
         );
     }
@@ -41,13 +41,13 @@ function AdminPageContent() {
             const data = await res.json();
 
             if (!res.ok) {
-                setError(data.error || 'Login failed');
+                setError(data.error || 'Login gagal');
                 return;
             }
 
             router.push('/rz-x9k7m/dashboard');
         } catch {
-            setError('Network error. Please try again.');
+            setError('Kesalahan jaringan. Silakan coba lagi.');
         } finally {
             setLoading(false);
         }
@@ -63,8 +63,8 @@ function AdminPageContent() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
                     </div>
-                    <h1 className="text-2xl font-bold text-white tracking-tight">Command Center</h1>
-                    <p className="text-sm text-zinc-500 mt-1">Rizzon Taekwondo Administration</p>
+                    <h1 className="text-2xl font-bold text-white tracking-tight">Pusat Komando</h1>
+                    <p className="text-sm text-zinc-500 mt-1">Administrasi Rizzon Taekwondo</p>
                 </div>
 
                 {/* Login Form */}
@@ -113,15 +113,15 @@ function AdminPageContent() {
                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                                 </svg>
-                                Authenticating...
+                                Mengautentikasi...
                             </>
                         ) : (
-                            'Access Dashboard'
+                            'Masuk ke Dashboard'
                         )}
                     </button>
                 </form>
 
-                <p className="text-center text-xs text-zinc-700 mt-6">Secure Access Only</p>
+                <p className="text-center text-xs text-zinc-700 mt-6">Hanya Akses Aman</p>
             </div>
         </div>
     );

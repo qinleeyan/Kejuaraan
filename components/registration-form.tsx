@@ -15,39 +15,38 @@ import {
 import { saveFormData, getFormData, saveSubmission, clearFormData } from '@/lib/storage';
 
 const STEPS = [
-  { number: 1, title: 'Personal Information', description: 'Tell us about yourself' },
-  { number: 2, title: 'Competition Details', description: 'Choose your competition' },
-  { number: 3, title: 'Physical Metrics', description: 'Final measurements' },
+  { number: 1, title: 'Informasi Pribadi', description: 'Isi data diri Anda' },
+  { number: 2, title: 'Detail Kompetisi', description: 'Pilih kategori lomba' },
+  { number: 3, title: 'Metrik Fisik', description: 'Ukuran fisik atlet' },
 ];
 
 const GENDER_OPTIONS = [
-  { value: 'male', label: 'Male' },
-  { value: 'female', label: 'Female' },
-  { value: 'other', label: 'Other' },
+  { value: 'male', label: 'Laki-laki' },
+  { value: 'female', label: 'Perempuan' },
 ];
 
 const COMPETITION_OPTIONS = [
-  { value: 'kyorugi', label: 'Kyorugi (Sparring)' },
-  { value: 'poomsae', label: 'Poomsae (Forms)' },
+  { value: 'kyorugi', label: 'Kyorugi (Tanding)' },
+  { value: 'poomsae', label: 'Poomsae (Jurus)' },
 ];
 
 const BELT_COLOR_OPTIONS = [
-  { value: 'putih', label: 'Putih (White)' },
-  { value: 'kuning', label: 'Kuning (Yellow)' },
-  { value: 'kuning-strip', label: 'Kuning Strip (Yellow Stripe)' },
-  { value: 'hijau', label: 'Hijau (Green)' },
-  { value: 'hijau-strip', label: 'Hijau Strip (Green Stripe)' },
-  { value: 'biru', label: 'Biru (Blue)' },
-  { value: 'biru-strip', label: 'Biru Strip (Blue Stripe)' },
-  { value: 'merah', label: 'Merah (Red)' },
-  { value: 'merah-strip-1', label: 'Merah Strip I (Red Stripe I)' },
-  { value: 'merah-strip-2', label: 'Merah Strip II (Red Stripe II)' },
-  { value: 'dan', label: 'DAN (Black Belt)' },
+  { value: 'putih', label: 'Putih' },
+  { value: 'kuning', label: 'Kuning' },
+  { value: 'kuning-strip', label: 'Kuning Strip' },
+  { value: 'hijau', label: 'Hijau' },
+  { value: 'hijau-strip', label: 'Hijau Strip' },
+  { value: 'biru', label: 'Biru' },
+  { value: 'biru-strip', label: 'Biru Strip' },
+  { value: 'merah', label: 'Merah' },
+  { value: 'merah-strip-1', label: 'Merah Strip I' },
+  { value: 'merah-strip-2', label: 'Merah Strip II' },
+  { value: 'dan', label: 'DAN (Sabuk Hitam)' },
 ];
 
 const CLASS_CATEGORY_OPTIONS = [
-  { value: 'prestasi', label: 'Prestasi (Advanced)' },
-  { value: 'pemula', label: 'Pemula (Beginner)' },
+  { value: 'prestasi', label: 'Prestasi' },
+  { value: 'pemula', label: 'Pemula' },
 ];
 
 export const RegistrationForm = () => {
@@ -192,7 +191,7 @@ export const RegistrationForm = () => {
           action: 'create',
           idKejuaraan: formData.championshipId || 'General',
           nama: formData.fullName,
-          gender: formData.gender === 'male' ? 'Laki-laki' : formData.gender === 'female' ? 'Perempuan' : 'Other',
+          gender: formData.gender === 'male' ? 'Laki-laki' : formData.gender === 'female' ? 'Perempuan' : 'Lainnya',
           sabuk: BELT_COLOR_OPTIONS.find(o => o.value === formData.beltColor)?.label || formData.beltColor,
           tempatTanggalLahir: `${formData.placeOfBirth}, ${formData.dateOfBirth}`,
           dojang: formData.dojang,
@@ -220,7 +219,7 @@ export const RegistrationForm = () => {
         }
       } catch (error) {
         console.error('Submission failed:', error);
-        alert('Failed to submit registration. Please try again.');
+        alert('Gagal mengirim pendaftaran. Silakan coba lagi.');
       } finally {
         setIsSubmitting(false);
       }
@@ -278,18 +277,18 @@ export const RegistrationForm = () => {
         {currentStep === 1 && (
           <div className="space-y-6">
             <FormInput
-              label="Full Name"
+              label="Nama Lengkap"
               name="fullName"
               type="text"
               value={formData.fullName}
               onChange={handleInputChange}
               error={errors.fullName}
-              placeholder="Enter your full name"
+              placeholder="Masukkan nama lengkap Anda"
               required
             />
 
             <FormInput
-              label="Date of Birth"
+              label="Tanggal Lahir"
               name="dateOfBirth"
               type="date"
               value={formData.dateOfBirth}
@@ -299,18 +298,18 @@ export const RegistrationForm = () => {
             />
 
             <FormInput
-              label="Place of Birth"
+              label="Tempat Lahir"
               name="placeOfBirth"
               type="text"
               value={formData.placeOfBirth}
               onChange={handleInputChange}
               error={errors.placeOfBirth}
-              placeholder="City, Country"
+              placeholder="Kota, Provinsi"
               required
             />
 
             <FormSelect
-              label="Gender"
+              label="Jenis Kelamin"
               name="gender"
               value={formData.gender}
               onChange={handleInputChange}
@@ -326,7 +325,7 @@ export const RegistrationForm = () => {
               value={formData.dojang}
               onChange={handleInputChange}
               error={errors.dojang}
-              placeholder="Enter your Dojang name"
+              placeholder="Masukkan nama Dojang Anda"
               required
             />
           </div>
@@ -335,18 +334,18 @@ export const RegistrationForm = () => {
         {currentStep === 2 && (
           <div className="space-y-6">
             <FormSelect
-              label="Competition Category"
+              label="Kategori Kompetisi"
               name="competitionCategory"
               value={formData.competitionCategory}
               onChange={handleInputChange}
               options={COMPETITION_OPTIONS}
               error={errors.competitionCategory}
-              hint="Choose between Kyorugi (sparring) or Poomsae (forms)"
+              hint="Pilih antara Kyorugi (Tanding) atau Poomsae (Jurus)"
               required
             />
 
             <FormSelect
-              label="Belt Color"
+              label="Warna Sabuk"
               name="beltColor"
               value={formData.beltColor}
               onChange={handleInputChange}
@@ -356,13 +355,13 @@ export const RegistrationForm = () => {
             />
 
             <FormSelect
-              label="Class Category"
+              label="Kategori Kelas"
               name="classCategory"
               value={formData.classCategory}
               onChange={handleInputChange}
               options={CLASS_CATEGORY_OPTIONS}
               error={errors.classCategory}
-              hint="Prestasi for advanced athletes, Pemula for beginners"
+              hint="Pilih Prestasi atau Pemula"
               required
             />
           </div>
@@ -375,23 +374,23 @@ export const RegistrationForm = () => {
                 <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12z" clipRule="evenodd" />
                 </svg>
-                <p className="text-sm font-semibold text-foreground">Registration Summary</p>
+                <p className="text-sm font-semibold text-foreground">Ringkasan Pendaftaran</p>
               </div>
               <div className="text-sm text-muted-foreground space-y-2">
                 <div className="flex justify-between items-start">
-                  <span className="font-medium">Name:</span>
+                  <span className="font-medium">Nama:</span>
                   <span className="text-right">{formData.fullName}</span>
                 </div>
                 <div className="flex justify-between items-start">
-                  <span className="font-medium">Competition:</span>
-                  <span className="text-right">{formData.competitionCategory === 'kyorugi' ? 'Kyorugi (Sparring)' : 'Poomsae (Forms)'}</span>
+                  <span className="font-medium">Kompetisi:</span>
+                  <span className="text-right">{formData.competitionCategory === 'kyorugi' ? 'Kyorugi (Tanding)' : 'Poomsae (Jurus)'}</span>
                 </div>
                 <div className="flex justify-between items-start mt-2">
-                  <span className="font-medium">Belt Color:</span>
+                  <span className="font-medium">Warna Sabuk:</span>
                   <span className="text-right">{BELT_COLOR_OPTIONS.find(o => o.value === formData.beltColor)?.label}</span>
                 </div>
                 <div className="flex justify-between items-start mt-2">
-                  <span className="font-medium">Category:</span>
+                  <span className="font-medium">Kategori:</span>
                   <span className="text-right">{formData.classCategory === 'prestasi' ? 'Prestasi' : 'Pemula'}</span>
                 </div>
                 <div className="flex justify-between items-start mt-2 pt-2 border-t border-border/50">
@@ -402,28 +401,28 @@ export const RegistrationForm = () => {
             </div>
 
             <FormInput
-              label="Height"
+              label="Tinggi Badan"
               name="height"
               type="text"
               inputMode="numeric"
               value={formData.height}
               onChange={handleHeightChange}
               error={errors.height}
-              placeholder="Enter height in cm"
-              hint="Whole numbers only (100-230 cm)"
+              placeholder="Masukkan tinggi dalam cm"
+              hint="Gunakan angka saja (100-230 cm)"
               required
             />
 
             <FormInput
-              label="Weight"
+              label="Berat Badan"
               name="weight"
               type="text"
               inputMode="numeric"
               value={formData.weight}
               onChange={handleWeightChange}
               error={errors.weight}
-              placeholder="Enter weight in kg"
-              hint="Whole numbers only (20-200 kg)"
+              placeholder="Masukkan berat dalam kg"
+              hint="Gunakan angka saja (20-200 kg)"
               required
             />
           </div>
@@ -437,10 +436,10 @@ export const RegistrationForm = () => {
             type="button"
             onClick={handlePreviousStep}
             className="flex-1 px-4 sm:px-6 py-3 sm:py-4 border-2 border-border rounded-lg font-semibold text-foreground hover:bg-muted hover:border-border/70 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50"
-            aria-label="Go to previous step"
+            aria-label="Kembali ke langkah sebelumnya"
           >
-            <span className="hidden sm:inline">Previous</span>
-            <span className="sm:hidden">Back</span>
+            <span className="hidden sm:inline">Sebelumnya</span>
+            <span className="sm:hidden">Kembali</span>
           </button>
         )}
 
@@ -449,9 +448,9 @@ export const RegistrationForm = () => {
             type="button"
             onClick={handleNextStep}
             className="flex-1 px-4 sm:px-6 py-3 sm:py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center justify-center gap-2 group"
-            aria-label="Go to next step"
+            aria-label="Lanjut ke langkah berikutnya"
           >
-            Next
+            Lanjut
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -463,7 +462,7 @@ export const RegistrationForm = () => {
             type="submit"
             disabled={isSubmitting}
             className="flex-1 px-4 sm:px-6 py-3 sm:py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
-            aria-label="Submit registration"
+            aria-label="Kirim pendaftaran"
           >
             {isSubmitting ? (
               <span className="flex items-center gap-2">
@@ -471,14 +470,14 @@ export const RegistrationForm = () => {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Submitting...
+                Mengirim...
               </span>
             ) : (
               <>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Submit</span>
+                <span>Daftar Sekarang</span>
               </>
             )}
           </button>
@@ -524,7 +523,7 @@ const SuccessScreen = ({ submissionId, formData }: SuccessScreenProps) => {
       return true;
     } catch (error) {
       console.error('Failed to generate ticket:', error);
-      alert('Failed to generate E-Ticket. Please try again.');
+      alert('Gagal membuat E-Tiket. Silakan coba lagi.');
       return false;
     } finally {
       setIsGeneratingTicket(false);
@@ -533,7 +532,7 @@ const SuccessScreen = ({ submissionId, formData }: SuccessScreenProps) => {
 
   const handleWhatsApp = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const categoryLabel = formData.competitionCategory === 'kyorugi' ? 'Kyorugi (Sparring)' : 'Poomsae (Forms)';
+    const categoryLabel = formData.competitionCategory === 'kyorugi' ? 'Kyorugi (Tanding)' : 'Poomsae (Jurus)';
     const waText = `Halo Admin Rizzon, saya sudah selesai melakukan pendaftaran kejuaraan.\n\nNama: ${formData.fullName}\nKategori: ${categoryLabel}\nID Pendaftaran: ${submissionId}\n\nBerikut saya lampirkan informasi pendaftarannya. Terima kasih.`;
     const waUrl = `https://wa.me/6281315336286?text=${encodeURIComponent(waText)}`;
 
@@ -548,9 +547,9 @@ const SuccessScreen = ({ submissionId, formData }: SuccessScreenProps) => {
     <div className="flex flex-col items-center justify-center gap-8 text-center animate-slideInUp py-8">
       {/* Visual Identity / Header */}
       <div>
-        <h2 className="text-4xl font-bold text-foreground mb-3">Registration Successful!</h2>
+        <h2 className="text-4xl font-bold text-foreground mb-3">Pendaftaran Berhasil!</h2>
         <p className="text-lg text-muted-foreground max-w-md">
-          Thank you for registering. Please download your E-Ticket below and confirm your payment via WhatsApp.
+          Terima kasih telah mendaftar. Silakan unduh E-Tiket Anda di bawah ini dan konfirmasi pembayaran melalui WhatsApp.
         </p>
       </div>
 
@@ -584,7 +583,7 @@ const SuccessScreen = ({ submissionId, formData }: SuccessScreenProps) => {
           <div className="w-full p-8 bg-card text-left">
             {submissionId && (
               <div className="text-center mb-6">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">Registration ID</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">ID Pendaftaran</p>
                 <p className="text-2xl font-mono font-bold text-foreground bg-muted/50 py-3 px-6 rounded-xl border border-border/50 inline-block tracking-wider">
                   {submissionId}
                 </p>
@@ -593,27 +592,27 @@ const SuccessScreen = ({ submissionId, formData }: SuccessScreenProps) => {
 
             <div className="space-y-5">
               <div>
-                <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wider">Athlete Name</p>
+                <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wider">Nama Atlet</p>
                 <p className="font-bold text-lg text-foreground capitalize">{formData.fullName}</p>
               </div>
 
               <div className="grid grid-cols-2 gap-y-5 gap-x-4">
                 <div>
-                  <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wider">Competition</p>
+                  <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wider">Kompetisi</p>
                   <p className="font-bold text-primary">{formData.competitionCategory === 'kyorugi' ? 'Kyorugi' : 'Poomsae'}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wider">Class</p>
+                  <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wider">Kelas</p>
                   <p className="font-bold text-foreground">{formData.classCategory === 'prestasi' ? 'Prestasi' : 'Pemula'}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wider">Belt Level</p>
+                  <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wider">Tingkat Sabuk</p>
                   <p className="font-bold text-foreground">
                     {BELT_COLOR_OPTIONS.find(o => o.value === formData.beltColor)?.label?.split(' ')[0]}
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wider">Physique</p>
+                  <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wider">Fisik</p>
                   <p className="font-bold text-foreground">{formData.height}cm / {formData.weight}kg</p>
                 </div>
               </div>
@@ -632,7 +631,7 @@ const SuccessScreen = ({ submissionId, formData }: SuccessScreenProps) => {
           <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
           </svg>
-          {isGeneratingTicket ? 'Generating...' : 'Confirm via WhatsApp'}
+          {isGeneratingTicket ? 'Memproses...' : 'Konfirmasi via WhatsApp'}
         </a>
 
         <div className="flex gap-3">
@@ -644,7 +643,7 @@ const SuccessScreen = ({ submissionId, formData }: SuccessScreenProps) => {
             <svg className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            Download E-Ticket
+            Unduh E-Tiket
           </button>
 
           <button
@@ -654,7 +653,7 @@ const SuccessScreen = ({ submissionId, formData }: SuccessScreenProps) => {
             <svg className="w-5 h-5 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
-            Register Another
+            Daftar Lagi
           </button>
         </div>
       </div>

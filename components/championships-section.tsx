@@ -40,15 +40,15 @@ export const ChampionshipsSection = ({ initialChampionships = [] }: { initialCha
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6">
             <span className="w-2 h-2 bg-primary rounded-full" />
-            <span className="text-xs font-semibold text-primary uppercase tracking-wide">Upcoming Competitions</span>
+            <span className="text-xs font-semibold text-primary uppercase tracking-wide">Kejuaraan Mendatang</span>
           </div>
 
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 text-balance">
-            Our <span className="text-primary">Championships</span>
+            Daftar <span className="text-primary">Kejuaraan</span>
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose from our exciting championship events and register to compete with elite taekwondo athletes.
+            Pilih dari daftar agenda kejuaraan kami yang seru dan daftar untuk bertanding dengan atlet taekwondo elit lainnya.
           </p>
         </div>
 
@@ -86,13 +86,13 @@ export const ChampionshipsSection = ({ initialChampionships = [] }: { initialCha
                       onClick={() => openModal(championship)}
                       className="flex-1 inline-flex items-center justify-center px-4 py-2 border-2 border-primary/20 bg-primary/5 text-primary rounded-lg font-semibold hover:bg-primary/10 transition-all duration-200"
                     >
-                      Details
+                      Detail
                     </button>
                     <Link
                       href={`/${championship.id}/register`}
                       className="flex-[2] inline-flex items-center justify-center px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all duration-200 group-hover:shadow-md"
                     >
-                      <span>Register</span>
+                      <span>Daftar</span>
                       <svg className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
@@ -106,8 +106,8 @@ export const ChampionshipsSection = ({ initialChampionships = [] }: { initialCha
               <svg className="w-12 h-12 text-muted-foreground mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
               </svg>
-              <h3 className="text-xl font-bold text-foreground mb-2">No Active Championships</h3>
-              <p className="text-muted-foreground">Check back later for upcoming tournament events.</p>
+              <h3 className="text-xl font-bold text-foreground mb-2">Tidak Ada Kejuaraan Aktif</h3>
+              <p className="text-muted-foreground">Silakan cek kembali nanti untuk agenda turnamen mendatang.</p>
             </div>
           )}
         </div>
@@ -150,7 +150,7 @@ export const ChampionshipsSection = ({ initialChampionships = [] }: { initialCha
                   <div className="flex-1 p-6 md:p-8 overflow-y-auto">
                     <h4 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                      Event Description
+                      Deskripsi Acara
                     </h4>
                     <div className="prose prose-invert max-w-none pb-4">
                       <p className="text-muted-foreground leading-relaxed whitespace-pre-wrap text-base">
@@ -166,7 +166,7 @@ export const ChampionshipsSection = ({ initialChampionships = [] }: { initialCha
                       onClick={closeModal}
                       className="w-full py-3.5 bg-primary text-primary-foreground rounded-xl font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3 text-lg group"
                     >
-                      <span>Register Now</span>
+                      <span>Daftar Sekarang</span>
                       <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
@@ -176,7 +176,7 @@ export const ChampionshipsSection = ({ initialChampionships = [] }: { initialCha
                       onClick={closeModal}
                       className="w-full py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-medium text-center"
                     >
-                      Close Details
+                      Tutup Detail
                     </button>
                   </div>
                 </div>
