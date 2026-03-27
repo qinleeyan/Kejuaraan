@@ -118,46 +118,60 @@ export const Homepage = ({ championships = [] }: { championships?: any[] }) => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <div className="text-center mb-12">
-            description:
-            'Pertandingan tanding penuh energi yang menampilkan teknik kaki dan tangan yang dinamis',
-            highlights: [
-            'Pertandingan kontak fisik penuh',
-            'Kompetisi gaya Olimpiade',
-            'Berbagai kategori berat badan',
-            'Aksi tempo cepat',
-            ],
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Program Kami</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Pilih format kompetisi yang sesuai dengan gaya dan tingkat keahlian Anda
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: 'Kyorugi (Tanding)',
+                colorClass: 'primary',
+                bgClass: 'bg-primary/5',
+                borderClass: 'border-primary/20',
+                textClass: 'text-primary',
+                description:
+                  'Pertandingan tanding penuh energi yang menampilkan teknik kaki dan tangan yang dinamis',
+                highlights: [
+                  'Pertandingan kontak fisik penuh',
+                  'Kompetisi gaya Olimpiade',
+                  'Berbagai kategori berat badan',
+                  'Aksi tempo cepat',
+                ],
               },
-            {
-              title: 'Poomsae (Jurus)',
-            colorClass: 'secondary',
-            bgClass: 'bg-secondary/5',
-            borderClass: 'border-secondary/20',
-            textClass: 'text-secondary',
-            description:
-            'Tunjukkan kesempurnaan teknik melalui pola gerakan dan jurus yang koreografinya teratur',
-            highlights: [
-            'Presisi teknis',
-            'Ekspresi artistik',
-            'Pola tradisional',
-            'Kategori perorangan dan beregu',
-            ],
+              {
+                title: 'Poomsae (Jurus)',
+                colorClass: 'secondary',
+                bgClass: 'bg-secondary/5',
+                borderClass: 'border-secondary/20',
+                textClass: 'text-secondary',
+                description:
+                  'Tunjukkan kesempurnaan teknik melalui pola gerakan dan jurus yang koreografinya teratur',
+                highlights: [
+                  'Presisi teknis',
+                  'Ekspresi artistik',
+                  'Pola tradisional',
+                  'Kategori perorangan dan beregu',
+                ],
               },
             ].map((program, index) => (
-            <div
-              key={index}
-              className={`p-8 ${program.bgClass} border-2 ${program.borderClass} rounded-xl hover:shadow-md transition-all duration-300`}
-            >
-              <h3 className={`text-2xl font-bold ${program.textClass} mb-3`}>{program.title}</h3>
-              <p className="text-muted-foreground mb-6">{program.description}</p>
-              <ul className="space-y-3">
-                {program.highlights.map((highlight, i) => (
-                  <li key={i} className="flex items-center gap-3 text-foreground">
-                    <span className={`w-2.5 h-2.5 ${program.textClass} rounded-full flex-shrink-0`} />
-                    <span className="text-sm font-medium">{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <div
+                key={index}
+                className={`p-8 ${program.bgClass} border-2 ${program.borderClass} rounded-xl hover:shadow-md transition-all duration-300`}
+              >
+                <h3 className={`text-2xl font-bold ${program.textClass} mb-3`}>{program.title}</h3>
+                <p className="text-muted-foreground mb-6">{program.description}</p>
+                <ul className="space-y-3">
+                  {program.highlights.map((highlight, i) => (
+                    <li key={i} className="flex items-center gap-3 text-foreground">
+                      <span className={`w-2.5 h-2.5 ${program.textClass} rounded-full flex-shrink-0`} />
+                      <span className="text-sm font-medium">{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>
