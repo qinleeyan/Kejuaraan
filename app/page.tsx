@@ -1,4 +1,6 @@
 import { Homepage } from '@/components/homepage';
+import fs from 'fs';
+import path from 'path';
 
 export const metadata = {
   title: 'Rizzon Taekwondo Dojang - Pendaftaran Kejuaraan & Pelatihan Elit',
@@ -43,5 +45,23 @@ export default async function Home() {
     console.error('Failed to fetch championships server-side:', error);
   }
 
-  return <Homepage championships={championships} />;
+  // Auto-scan gallery images from public/gambar_juara
+  let galleryImages = [];
+  try {
+    const galleryPath = path.join(process.cwd(), 'public', 'gambar_juara');
+    if (fs.existsSync(galleryPath)) {
+      const files = fs.readdirSync(galleryPath);
+      galleryImages = files
+        .filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file))
+        .map((file, index) => ({
+          src: `/gambar_juara/${file}`,
+          alt: `Gallery Image ${index + 1}`,
+          title: `Moment ${index + 1}`,
+        }));
+    }
+  } catch (error) {
+    console.error('Failed to scan gallery images:', error);
+  }
+
+  return <Homepage championships={championships} galleryImages={galleryImages} />;
 }

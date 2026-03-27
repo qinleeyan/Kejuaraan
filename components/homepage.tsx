@@ -2,7 +2,13 @@ import Link from 'next/link';
 import { ImageCarousel } from './image-carousel';
 import { ChampionshipsSection } from './championships-section';
 
-export const Homepage = ({ championships = [] }: { championships?: any[] }) => {
+export const Homepage = ({
+  championships = [],
+  galleryImages = []
+}: {
+  championships?: any[],
+  galleryImages?: any[]
+}) => {
   return (
     <div className="w-full">
 
@@ -62,42 +68,12 @@ export const Homepage = ({ championships = [] }: { championships?: any[] }) => {
             <div className="relative animate-slideInDown hidden md:block">
               <div className="relative w-full max-w-sm mx-auto rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 ring-1 ring-black/5 dark:ring-white/10">
                 <ImageCarousel
-                  images={[
+                  images={galleryImages.length > 0 ? galleryImages : [
                     {
                       src: '/gambar_juara/gambar1.jpeg',
                       alt: 'Championship Image 1',
                       title: 'Championship Moment 1',
-                    },
-                    {
-                      src: '/gambar_juara/gambar2.jpeg',
-                      alt: 'Championship Image 2',
-                      title: 'Championship Moment 2',
-                    },
-                    {
-                      src: '/gambar_juara/gambar3.jpeg',
-                      alt: 'Championship Image 3',
-                      title: 'Championship Moment 3',
-                    },
-                    {
-                      src: '/gambar_juara/gambar4.jpeg',
-                      alt: 'Championship Image 4',
-                      title: 'Championship Moment 4',
-                    },
-                    {
-                      src: '/gambar_juara/gambar5.jpeg',
-                      alt: 'Championship Image 5',
-                      title: 'Championship Moment 5',
-                    },
-                    {
-                      src: '/gambar_juara/gambar6.jpeg',
-                      alt: 'Championship Image 6',
-                      title: 'Championship Moment 6',
-                    },
-                    {
-                      src: '/gambar_juara/gambar7.jpeg',
-                      alt: 'Championship Image 7',
-                      title: 'Championship Moment 7',
-                    },
+                    }
                   ]}
                   autoPlay={true}
                   interval={5000}
